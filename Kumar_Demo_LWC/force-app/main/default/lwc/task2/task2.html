@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="Identify states task2">
+        <div class="slds-var-p-around_medium">
+            <lightning-combobox
+            name="progress"
+            label="Select states"
+            value={value}
+            placeholder="Select Progress"
+            options={options}
+            onchange={handleChange} ></lightning-combobox>
+            <template if:true={status}>
+                <template for:item = 'Indian_state' for:each={Indian_states}>
+                    &nbsp;&nbsp;&nbsp;States Name : {Indian_state}
+                </template>
+            </template>
+            <template if:false={status}>
+                &nbsp;&nbsp;&nbsp; {state_value}
+            </template>
+        </div>
+    </lightning-card>
+</template>

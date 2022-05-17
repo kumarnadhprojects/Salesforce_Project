@@ -1,0 +1,51 @@
+<template>
+    <lightning-card title="Enter student details">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-size_3-of-12 slds-p-around_x-small">
+                <lightning-input type="text" name="input1" label="Student Name" onchange={inp3}></lightning-input>
+            </div>
+            <div class="slds-size_3-of-12 slds-p-around_x-small">
+                <lightning-combobox class="slds-var-m-left_x-small"
+                    name="progress"
+                    label="Batch"
+                    value=""
+                    placeholder="Select batch"
+                    options={options}
+                    onchange={handleChange}
+                    required
+                ></lightning-combobox>
+            </div>
+            <div class="slds-size_3-of-12 slds-p-around_x-small">
+                <lightning-input type="date" name="input1" label="From" onchange={inp1}></lightning-input>
+            </div>
+            <div class="slds-size_3-of-12 slds-p-around_x-small">
+                <lightning-input type="date" name="input1" label="To" onchange={inp2}></lightning-input>
+            </div>
+        </div>
+    </lightning-card>
+    <br>
+    <template if:true={status}>
+        <lightning-card title="Attendence Details">
+            <lightning-datatable 
+                data={records} 
+                columns={columnTable} 
+                key-field="Id">
+            </lightning-datatable>
+            <!-- <template if:true={attendence.data}>
+                <template for:each={attendence.data} for:item="att">
+                    <table key={att.Id} style="border: 0.5px solid #000;">
+                        <tr>
+                            <td>{att.Student_Name__r.Name}</td>
+                            <td>{att.Student_Name__r.Batches__c}</td>
+                            <td>{att.Present_Absent__c}</td>
+                            <td>{att.Date__c}</td>
+                        </tr>
+                    </table>
+                </template>
+            </template>
+            <template if:true={attendence.error}>
+                <c-error-panel errors={attendence.error}></c-error-panel>
+            </template> -->
+        </lightning-card>
+    </template>
+</template>

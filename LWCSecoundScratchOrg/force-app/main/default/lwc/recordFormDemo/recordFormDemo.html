@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Record Form Create Edit">
+        <lightning-record-form
+            object-api-name={objectApiName}
+            fields={fields}
+            onsuccess={handleSuccess}>
+        >
+        </lightning-record-form>
+    </lightning-card> <br><br>
+    <lightning-card title="Record Form Edit">
+        <lightning-record-form
+            object-api-name={objectApiName}
+            fields={fields}
+            record-id="a00N000000R8H8wIAF">
+        >
+        </lightning-record-form>
+    </lightning-card><br><br>
+    <lightning-card title="Record Form Read Only">
+        <lightning-record-form
+            object-api-name={objectApiName}
+            fields={fields}
+            record-id="a00N000000R8H8wIAF"
+            mode="readonly">
+        >
+        </lightning-record-form>
+    </lightning-card><br><br>
+    <lightning-card title="Record Form New Layout 2 Columns">
+        <lightning-record-form
+            object-api-name={objectApiName}
+            fields={fields}
+            record-id="a00N000000R8H8wIAF"
+            mode="edit"
+            columns="2">
+        >
+        </lightning-record-form>
+    </lightning-card>
+</template>

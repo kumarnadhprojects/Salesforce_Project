@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="My Contact Record">
+        <template if:true={contact.data}>
+            <p>Contact name: {name}</p>
+            <p>Contact title: {title}</p>
+            <p>Contact phone: {phone}</p>
+            <p>Contact email: {email}</p>
+            <template for:each={contacts.data} for:item="contact">
+                <p key={contact.Id}>Account Name: {contact.Account.Name}</p>
+            </template>
+        </template>
+        <template if:true={contact.error}>
+            <strong>Some thing went wrong</strong>
+        </template>
+    </lightning-card>
+</template>

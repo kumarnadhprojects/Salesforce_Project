@@ -1,0 +1,6 @@
+<template>
+    <lightning-card title="Child to parent relationship on components">
+        <lightning-input type="text" value={parentVal} label="Parent input component2" placeholder="type input..."></lightning-input>
+        <c-child-cmp_2 onchildtoparent={handleChildValue}></c-child-cmp_2>
+    </lightning-card>
+</template>

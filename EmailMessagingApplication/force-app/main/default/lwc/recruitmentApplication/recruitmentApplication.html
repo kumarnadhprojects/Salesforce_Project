@@ -1,0 +1,131 @@
+<template>
+    <!-- Stage 1 -->
+    <div if:true={isLoad} class="demo-only" style="height:6rem;position:relative">
+        <div>
+            <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </div>
+    <lightning-card if:true={stage1}>
+        <div style="display:flex; justify-content: center;" class="slds-p-around_x-small">
+            <p style="font-size:20px;"> <strong><u>Received job description</u></strong></p>
+        </div>
+        <div style="display:flex; justify-content: center;" class="slds-p-top_xx-small">
+            <div class="slds-form-element">
+                <div class="slds-form-element__control">
+                    <div class="slds-checkbox">
+                        <input type="checkbox" onclick={handleCheckbox} name="options" id="checkbox-unique-id-80" value="checkbox-unique-id-80" />
+                        <label class="slds-checkbox__label" for="checkbox-unique-id-80">
+                        <span class="slds-checkbox_faux"></span>
+                        <span class="slds-form-element__label">Received resume.</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slds-p-top_x-small" style="display:flex; justify-content: center;">
+            <lightning-button variant="brand" label="Next" disabled={disabledstage1} onclick={handleClick}></lightning-button>
+        </div>
+    </lightning-card>
+    <!-- Stage 2 and Stage 3-->
+    <lightning-card if:true={stage2}>
+        <p if:true={mainHeading} style="font-size:25px; display:flex; justify-content: center;"><strong><u>Select candidate details</u></strong></p>
+        <div if:true={recordFormstage2}>
+            <lightning-record-form
+                object-api-name={objectApiName}
+                fields={fields}
+                record-id={recordId}
+                onsuccess={handleSuccess}
+                oncancel={handleCancel1}
+            >
+            </lightning-record-form>
+        </div>
+        <p if:true={mainsubHeading} style="font-size:25px; display:flex; justify-content: center;"><strong><u>Interview Process steps</u></strong></p>
+        <div if:true={dropdownstage2}>
+        <lightning-combobox
+            name="progress"
+            label="Referral"
+            value={value}
+            placeholder="Select Yes or No"
+            options={options}
+            onchange={handledropstage2} ></lightning-combobox>
+        </div>
+        <lightning-record-edit-form
+            object-api-name = "HR__c"
+            record-id={fieldId}
+        >
+            <lightning-input-field if:true={refferDisp} field-name="Referrer__c"> </lightning-input-field>
+            <lightning-input-field if:true={vendorDisp} field-name="Vendor__c"> </lightning-input-field>
+            <div if:true={stage4}>
+                <lightning-combobox
+                    class="slds-m-left_xx-small"
+                    name="progress"
+                    label="Vendor Approvel"
+                    value={value2}
+                    placeholder="Select yes or No"
+                    options={options2}
+                    onchange={handledropstage4} ></lightning-combobox>
+            </div>
+            <lightning-input-field if:true={resonDisp} field-name="Reason__c"> </lightning-input-field>
+            <div if:true={stage5}>
+                <lightning-combobox
+                    class="slds-m-left_xx-small"
+                    name="progress"
+                    label="Vendor talk to candidate before submitting"
+                    value={value3}
+                    placeholder="Select yes or No"
+                    options={options3}
+                    onchange={handledropstage5} ></lightning-combobox>
+            </div>
+            <lightning-input-field if:true={vendornotmovingforword} field-name="Vendor_not_moving__c"> </lightning-input-field>
+            <lightning-input-field if:true={Vendorsubmittingtoclient} field-name="Vendor_submitting_to_client__c"> </lightning-input-field>
+            <lightning-input-field if:true={HrAgreedwithvendor} field-name="Hr_Agreed_with_vendor__c"> </lightning-input-field>
+            <lightning-input-field if:true={Interviewschedule} field-name="Interview_schedule__c"> </lightning-input-field>
+            <div if:true={stage6}>
+                <lightning-combobox
+                    class="slds-m-left_xx-small"
+                    name="progress"
+                    label="Selected"
+                    value={value4}
+                    placeholder="Select yes or No"
+                    options={options4}
+                    onchange={handledropstage6} ></lightning-combobox>
+            </div>
+            <lightning-input-field if:true={Feedbacktocandidate} field-name="Feedback_candidate__c"> </lightning-input-field>
+            <lightning-input-field if:true={CTC} field-name="CTC__c"> </lightning-input-field>
+            <lightning-input-field if:true={PayrollSystem} field-name="payroll__c"> </lightning-input-field>
+            <div if:true={stage2btn} class="slds-p-top_x-small" style="display:flex; justify-content: center;">
+                <div if:true={btnenable}>
+                <lightning-button
+                    class="slds-m-left_xx-small"
+                    variant="brand"
+                    type="submit"
+                    name="update"
+                    label="Next"
+                    onclick={handleStage3}
+                >
+                </lightning-button>
+                </div>
+                <div if:true={btndisable}>
+                    <lightning-button
+                        class="slds-m-left_xx-small"
+                        variant="brand"
+                        type="submit"
+                        name="update"
+                        label="Finish"
+                        onclick={handleStage4}
+                    >
+                    </lightning-button>
+                </div>
+            </div>    
+        </lightning-record-edit-form>
+    </lightning-card>
+    <lightning-card if:true={thankyoucard}>
+        <p style="display:flex; justify-content:center; font-size:50px;">
+            <strong>Thank you.</strong>
+        </p>
+    </lightning-card>
+</template>

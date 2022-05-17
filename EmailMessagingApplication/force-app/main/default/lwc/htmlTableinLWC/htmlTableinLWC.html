@@ -1,0 +1,51 @@
+<template>
+    <div if:true={isLoading} class="demo-only" style="height:6rem;position:relative">
+        <div class="slds-spinner_container">
+            <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </div>
+    <table>
+        <tr> <th>Company</th> <th>Contact</th> <th>Country</th> </tr> 
+        <tr> <td>Alfreds Futterkiste</td><td>Maria Anders</td><td>Germany</td></tr>
+        <tr> <td>TCS</td><td>Harishnath</td><td>India</td></tr>
+     </table>
+ 
+         <div class="slds-box slds-theme_default">
+             <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                 <thead>
+                     <tr>
+                         <th class="" scope="col">
+                             <div class="slds-truncate" title="Last Name">LastName</div>
+                           </th>
+                           <th class="" scope="col">
+                             <div class="slds-truncate" title="First Name">First Name</div>
+                           </th>
+                           <th class="" scope="col">
+                               <div class="slds-truncate" title="Account Name">Account Name</div>
+                             </th>
+                             <th class="" scope="col">
+                               <div class="slds-truncate" title="Account Rating">Account Rating</div>
+                             </th>
+                             <th class="" scope="col">
+                                 <div class="slds-truncate" title="Site">Account Industry</div>
+                               </th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                    <template for:each={acclist} for:item="acc">
+                         <tr key={acc.Id}>
+                             <td>{acc.LastName}</td>
+                             <td>{acc.FirstName}</td>
+                             <td>{acc.AccName}</td>
+                             <td>{acc.AccRating}</td>
+                             <td>{acc.AccIndustry}</td>
+                         </tr>
+                    </template>
+                 </tbody>
+             </table>
+        </div>
+</template>

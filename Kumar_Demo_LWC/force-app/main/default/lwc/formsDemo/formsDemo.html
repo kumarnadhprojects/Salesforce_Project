@@ -1,0 +1,76 @@
+<template>
+    <div style="background-color: #2f2cb7; padding:50px;">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                <div class="page-section" style="text-align: center; padding-top:2rem">
+                    <img src="https://developer.salesforce.com/assets/images/computer.png" alt="laptopLogo">
+                    <p style="padding-top:30px; font-size: 34px; letter-spacing: -.5px; font-weight:800; color: #fff;">Build enterprise-quality apps fast to bring your ideas to life</p>
+                    <ul class="slds-list_dotted" style="font-size:15px; color:#fff; text-align:left; padding-left:65px; padding-top:10px; line-height:2;">
+                        <li>Build apps fast with drag and drop tools</li>
+                        <li>Customize your data model with clicks</li>
+                        <li>Go further with Apex code</li>
+                        <li>Integrate with anything using powerful APIs</li>
+                        <li>Stay protected with enterprise-grade security</li>
+                        <li>Customize UI with clicks or any leading-edge web framework</li>
+                    </ul>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="12" small-device-size="12" medium-device-size="6" large-device-size="6">
+                <lightning-card>
+                    <div class="page-section" style="padding: 20px;">
+                        <div style="text-align:center;">
+                            <img style="width:110px; height:110px;" src="https://developer.salesforce.com/1/unknown/immutable/s/567fcbf/app/theme/dist/assets/images/salesforce-logo-corporate.svg" alt="salesfoece-logo">
+                            <p style="font-size: 20px; font-weight:800;">Sign up for your Salesforce Developer Edition</p>
+                            <p style="font-size:15px; padding-top: 10px;">A full-featured copy of the Platform, for free</p>
+                        </div>
+                        <div style="padding-top: 15px;">
+                            <lightning-layout>
+                                <lightning-layout-item size="6">
+                                    <lightning-input type="text" onchange={changefirstName} label="First Name" placeholder="Your first name" required></lightning-input>
+                                </lightning-layout-item>&nbsp;&nbsp;
+                                <lightning-layout-item size="6">
+                                    <lightning-input type="text" onchange={changelastName} label="Last Name" placeholder="Your last name" required></lightning-input>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <lightning-layout>
+                                <lightning-layout-item size="12">
+                                    <lightning-input type="text" label="Email" placeholder="Your email address" required></lightning-input>
+                                    <!-- Role -->
+                                    <lightning-combobox
+                                            name="Role"
+                                            label="Role"
+                                            value=""
+                                            placeholder="Your job role"
+                                            options={options}
+                                            onchange={handleChange}
+                                            required
+                                    ></lightning-combobox>
+                                    <!-- <p>Selected value is: {value}</p> -->
+                                    <lightning-input type="text" label="Company" placeholder="Company name" required></lightning-input>
+                                    <!-- Country/Region-->
+                                    <lightning-combobox
+                                            name="Country/Region"
+                                            label="Country/Region"
+                                            value=""
+                                            placeholder="Select Country/Region"
+                                            options={options1}
+                                            onchange={handleChange1}
+                                            required
+                                    ></lightning-combobox>
+                                    <!-- <p>Selected value is: {value1}</p> -->
+                                    <lightning-input type="text" label="Postal Code" placeholder="Your postal code" required></lightning-input>
+                                    <lightning-input type="text" label="Username" placeholder="Ex. name@yourcompany.com" required></lightning-input>
+                                    <p style="padding-top:20px;">By registering, you confirm you have read and agree to the <a href="#">Terms of Use </a>and the <a href="#">Master Subscription Agreement </a>and to the storing and processing of your personal data by Salesforce as described in the <a href="#">Privacy Statement</a>, including use for marketing purposes.</p>
+                                    <button type="submit" style="font-size:15px; font-weight:900;" onclick={handleClick} class="slds-var-m-top_x-small slds-var-p-around_x-small slds-button slds-button_brand slds-button_stretch">Sign me Up</button>
+                                    <!--<lightning-button style="font-size:15px; font-weight:900;" class="slds-m-top_x-small slds-var-p-around_x-small slds-button slds-button_brand slds-button_stretch" variant="brand" label="Sign me Up" title="Primary action" onclick={handleClick}></lightning-button>-->
+                                    <p class="slds-var-m-top_x-small" style="text-align:center; font-size: 15px;">Already have a Salesforce Developer Environment?<br/>
+                                        <lightning-button variant="base" label="Log in" title="Looks like a link" onclick={handleClick1} class="slds-var-m-left_x-small"></lightning-button></p>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                        </div>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

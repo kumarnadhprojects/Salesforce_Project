@@ -1,0 +1,14 @@
+<template>
+    Click on button to change status
+    <lightning-button variant="brand" label="Click on button status change" title="Primary action" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+    <template if:true={status}>
+        <lightning-card title="LWC">
+            This is LWC
+        </lightning-card>
+    </template>
+    <template if:false={status}>
+        <lightning-card title="Classic">
+            This is Classic
+        </lightning-card>
+    </template>
+</template>

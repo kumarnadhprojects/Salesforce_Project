@@ -1,0 +1,9 @@
+<template>
+    <lightning-spinner if:true={isLoading} alternative-text="Loading" variant="brand" size="medium">
+    </lightning-spinner>
+    <lightning-datatable
+        key-field="id"
+        data={acclist}
+        columns={columns}>
+    </lightning-datatable>
+</template>

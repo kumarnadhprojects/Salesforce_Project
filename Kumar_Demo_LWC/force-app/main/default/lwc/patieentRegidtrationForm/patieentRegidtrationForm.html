@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Patient Registration Form" icon-name="standard:account">
+        <div class="slds-var-p-around_x-small">
+            <lightning-input type="text" label="Hospitel name" onkeyup={handlehname}></lightning-input>
+            <lightning-input type="text" label="Patient name" onkeyup={handlename}></lightning-input>
+            <lightning-input type="Number" label="Patient Mobile Number" onkeyup={handlephone}></lightning-input>
+            <lightning-input type="Number" label="Patient Age" onkeyup={handleage}></lightning-input>
+            <lightning-input type="email" label="Patient Email" onkeyup={handleemail}></lightning-input>
+            <lightning-input type="text" label="Patient Gender" onkeyup={handlegender}></lightning-input><br/>
+            <lightning-button label="Save" onclick={handleSaveBtn}></lightning-button>
+            <br/> Hospital Name age: {patient.Hospital_Name__c}
+            <br/> Patient Name: {patient.Name}
+            <br/> Patient Mobile Number: {patient.Mobile__c}
+            <br/> Patient Age: {patient.Age__c}
+            <br/> Patient Email: {patient.Email__c}
+            <br/> Patient Gender: {patient.Gender__c}
+        </div>
+    </lightning-card>
+</template>

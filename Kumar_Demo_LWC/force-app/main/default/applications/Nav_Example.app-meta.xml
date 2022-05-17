@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#0070D2</headerColor>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <description>Navbar_Example</description>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <label>Nav_Example</label>
+    <navType>Standard</navType>
+    <tabs>standard-CmsExperiences</tabs>
+    <tabs>Another_Tab</tabs>
+    <tabs>UsingWire</tabs>
+    <tabs>Kumar_Demo_scratch_ORG</tabs>
+    <tabs>accountCreator</tabs>
+    <tabs>Developer_Signup_page</tabs>
+    <tabs>customRecordCreate</tabs>
+    <tabs>helloWorld</tabs>
+    <uiType>Lightning</uiType>
+    <utilityBar>Nav_Example_UtilityBar</utilityBar>
+</CustomApplication>

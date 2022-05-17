@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Student Registration form">
+        <div class="slds-m-around_small">
+            <lightning-input type="text" onkeyup={handleName} label="Enter your name" placeholder="Enter your name"></lightning-input>
+            <lightning-input type="Number" onkeyup={handleAge} label="Enter your age" placeholder="Enter your age"></lightning-input>
+            <lightning-input type="Number" onkeyup={handlePhone} label="Enter your phone" placeholder="Enter your phone"></lightning-input>
+            <lightning-input type="date" onchange={handleDOJ} label="Enter your date" placeholder="Enter your date"></lightning-input>
+            <lightning-input type="email" onkeyup={handleEmail} label="Enter your email" placeholder="enter your email"></lightning-input>
+            <br/>Your name is: {name}
+            <br/>Your age is: {age}
+            <br/>Your phone is: {phone}
+            <br/>Your doj is: {doj}
+            <br/>Your email is: {email}
+        </div>
+    </lightning-card>
+</template>

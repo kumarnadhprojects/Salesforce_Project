@@ -1,0 +1,15 @@
+<template>
+    <lightning-button varient="brand" label="Change Status" title="Primary action" onclick={changeStatus} class="slds-m-left_x-small"></lightning-button>
+    </br>
+    </br>
+    <template if:true={status}>
+        <lightning-card title="Account Details">
+            This is Account details
+        </lightning-card>
+    </template>
+    <template if:false={status}>
+        <lightning-card title="Employee Details">
+            This is Employee details
+        </lightning-card>
+    </template>
+</template>

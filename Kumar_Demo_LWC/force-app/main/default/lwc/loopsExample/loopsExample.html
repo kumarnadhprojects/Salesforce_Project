@@ -1,0 +1,14 @@
+<template>
+    <lightning-card>
+        <template for:item = 'movie_name' for:each={movies_names}>
+            &nbsp;&nbsp;&nbsp;Movie Name : {movie_name}
+        </template>
+    </lightning-card>
+    <lightning-card>
+        <template for:item='employee' for:each={employees}>
+            &nbsp;&nbsp;&nbsp;Employee Id : {employee.id}
+            &nbsp;&nbsp;&nbsp;Employee Name : {employee.name}
+            &nbsp;&nbsp;&nbsp;Employee Designation : {employee.desg}
+        </template>
+    </lightning-card>
+</template>
