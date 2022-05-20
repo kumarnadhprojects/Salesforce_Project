@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Field dependency">
+        <lightning-combobox
+            label="States"
+            value={value}
+            placeholder="Select state"
+            options={stateFieldData}
+            onchange={handlestates} >
+        </lightning-combobox>
+        <br>
+        <lightning-combobox
+            label="Cities"
+            placeholder="Select Cities"
+            options={citiesValueOptions} >
+        </lightning-combobox>
+    </lightning-card>
+</template>
