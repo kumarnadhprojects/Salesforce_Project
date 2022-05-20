@@ -17,7 +17,6 @@ const column =[
 export default class StudentCertificationProject extends LightningElement {
     error;
     records;
-    wiredRecords;
     coursename;
     designationOfCourse;
     issueDate;
@@ -56,17 +55,15 @@ export default class StudentCertificationProject extends LightningElement {
     }
 
     @wire(getRecordsDetails,{student_Name:'$student_Name'})
-    wiredAccount(value) {
-        this.wiredRecords = value;
-        const { data, error } = value;
+    wiredAccount({data,error}) {
         if (data) {
-            let tempRecords = JSON.parse( JSON.stringify( data ) );
-            tempRecords = tempRecords.map( row => {
+            let tempRecords = JSON.parse(JSON.stringify(data));
+            tempRecords = tempRecords.map(row => {
                 return { ...row, studentName: row.Student_Name__r.Name };
             })
             this.records = tempRecords;
             this.error = undefined;
-        } else if ( error ) {
+        } else if(error) {
             this.error = error;
             this.records = undefined;
         }
