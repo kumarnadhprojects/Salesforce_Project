@@ -6,12 +6,17 @@ import STUDENT_BATCHES_FIELD from '@salesforce/schema/Student_school__c.Batches_
 
 export default class WireMethodandComboboxRetriveData extends LightningElement {
     @track value;
+    @track BatchValues;
 
     @wire(getObjectInfo, { objectApiName: STUDENT_OBJECT })
     objectInfo;
 
     @wire(getPicklistValues, { recordTypeId: '$objectInfo.data.defaultRecordTypeId', fieldApiName: STUDENT_BATCHES_FIELD})
-    BatchPicklistValues;
+    BatchPicklistValues({data}){
+        if(data){
+            this.BatchValues = data.values;
+        }
+    };
 
     handleChange(event) {
         this.value = event.detail.value;
