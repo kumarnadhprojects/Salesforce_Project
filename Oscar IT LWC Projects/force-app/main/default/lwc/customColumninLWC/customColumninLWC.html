@@ -1,0 +1,37 @@
+<template>
+    <lightning-card>
+        <p style="font-size:18px; margin-bottom:10px;" class="slds-align_absolute-center"> <u><b>Custom Column in LWC</b></u></p>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" aria-label="Example table of Opportunities with vertical borders">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Account Name">Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Close Date">Rating</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Stage">Grade</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={accounts} for:item="acc">
+                    <tr key={acc.Id} class="slds-hint-parent">
+                        <td>{acc.Name}</td>
+                        <td>{acc.Rating}</td>
+                        <td>{acc.Grade}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+    <lightning-card title="Map Values">
+        <template for:each={accListMapValues} for:item="accMap">
+            <p key={accMap.key}>
+                Key ==> {accMap.key}
+                Value ==> {accMap.value}
+            </p>
+        </template>
+    </lightning-card>
+</template>

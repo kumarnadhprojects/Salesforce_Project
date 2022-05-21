@@ -1,0 +1,29 @@
+<template>
+    <lightning-card>
+        <p style="font-size:18px; margin-bottom:10px;" class="slds-align_absolute-center"> <u><b>Custom Student Column in LWC</b></u></p>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" aria-label="Example table of Opportunities with vertical borders">
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Account Name">Name</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Close Date">Marks</div>
+                    </th>
+                    <th class="" scope="col">
+                        <div class="slds-truncate" title="Stage">Grade</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <template for:each={studentsDetails} for:item="stu">
+                    <tr key={stu.Id} class="slds-hint-parent">
+                        <td>{stu.Name}</td>
+                        <td>{stu.Marks__c}</td>
+                        <td>{stu.Grade}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>
