@@ -16,7 +16,7 @@ export default class StudentCustomColumnLWC extends LightningElement {
                     studentNewRec.Grade = 'A';
                 }else if(studentNewRec.Marks__c >= 350){
                     studentNewRec.Grade = 'B';
-                }else if(studentNewRec.Marks__c <= 350){
+                }else if(studentNewRec.Marks__c < 350){
                     studentNewRec.Grade = 'C';
                 }
                 stuRecArray.push(studentNewRec);
