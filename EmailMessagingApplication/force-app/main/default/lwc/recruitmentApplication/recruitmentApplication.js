@@ -37,7 +37,6 @@ export default class RecruitmentApplication extends LightningElement {
     Interviewschedule = false;
     PayrollSystem = false;
     thankyoucard = false;
-
     // Start Spinner Functionality
     doExpensiveThing() {
         // Do something here
@@ -61,6 +60,7 @@ export default class RecruitmentApplication extends LightningElement {
 
     get options() {
         return [
+            { label: '--Select--', value: 'select'},
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
         ];
@@ -68,6 +68,7 @@ export default class RecruitmentApplication extends LightningElement {
 
     get options2() {
         return [
+            { label: '--Select--', value: 'select' },
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
         ];
@@ -75,6 +76,7 @@ export default class RecruitmentApplication extends LightningElement {
 
     get options3() {
         return [
+            { label: '--Select--', value: 'select' },
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
         ];
@@ -82,6 +84,7 @@ export default class RecruitmentApplication extends LightningElement {
 
     get options4() {
         return [
+            { label: '--Select--', value: 'select' },
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
         ];
@@ -93,7 +96,7 @@ export default class RecruitmentApplication extends LightningElement {
             this.refferDisp = true;
             this.vendorDisp = true;
             this.stage4 = true;
-        }else{
+        }else if(event.detail.value == 'No'){
             this.refferDisp = false;
             this.vendorDisp = true;
             this.stage4 = true;
@@ -106,7 +109,7 @@ export default class RecruitmentApplication extends LightningElement {
             this.resonDisp = false;
             this.stage5 = true;
 
-        }else{
+        }else if(event.detail.value == 'No'){
             this.resonDisp = true;
             this.stage5 = false;
             this.vendornotmovingforword = false;
@@ -128,7 +131,7 @@ export default class RecruitmentApplication extends LightningElement {
             this.HrAgreedwithvendor = true;
             this.Interviewschedule = true;
             this.stage6 = true;
-        }else{
+        }else if(event.detail.value == 'No'){
             this.vendornotmovingforword = true;
             this.Vendorsubmittingtoclient = false;
             this.HrAgreedwithvendor = false;
@@ -143,7 +146,7 @@ export default class RecruitmentApplication extends LightningElement {
             this.CTC = true;
             this.Feedbacktocandidate = false;
             this.PayrollSystem = true;
-        }else{
+        }else if(event.detail.value == 'No'){
             this.Feedbacktocandidate = true;
             this.CTC = false;
             this.PayrollSystem = false;
@@ -222,6 +225,19 @@ export default class RecruitmentApplication extends LightningElement {
     handleStage4(){
         this.stage2 = false;
         this.thankyoucard = true;
+    }
+
+    handleReset() {
+        const inputFields = this.template.querySelectorAll('lightning-input-field' );
+        if (inputFields) {
+            inputFields.forEach(field => {
+                field.reset();
+            });
+        }
+        this.value = 'select';
+        this.value2 = 'select';
+        this.value3 = 'select';
+        this.value4 = 'select';
     }
     
 }
