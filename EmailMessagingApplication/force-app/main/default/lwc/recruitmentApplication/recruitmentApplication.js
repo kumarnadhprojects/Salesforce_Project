@@ -60,7 +60,6 @@ export default class RecruitmentApplication extends LightningElement {
 
     get options() {
         return [
-            { label: '--Select--', value: 'select'},
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
         ];
@@ -68,7 +67,6 @@ export default class RecruitmentApplication extends LightningElement {
 
     get options2() {
         return [
-            { label: '--Select--', value: 'select' },
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
         ];
@@ -76,7 +74,6 @@ export default class RecruitmentApplication extends LightningElement {
 
     get options3() {
         return [
-            { label: '--Select--', value: 'select' },
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
         ];
@@ -84,7 +81,6 @@ export default class RecruitmentApplication extends LightningElement {
 
     get options4() {
         return [
-            { label: '--Select--', value: 'select' },
             { label: 'Yes', value: 'Yes' },
             { label: 'No', value: 'No' },
         ];
@@ -234,10 +230,10 @@ export default class RecruitmentApplication extends LightningElement {
                 field.reset();
             });
         }
-        this.value = 'select';
-        this.value2 = 'select';
-        this.value3 = 'select';
-        this.value4 = 'select';
+        this.value = null;
+        this.value2 = null;
+        this.value3 = null;
+        this.value4 = null;
     }
     
 }
