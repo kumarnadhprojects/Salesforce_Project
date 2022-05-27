@@ -24,15 +24,41 @@ export default class LightningRecordEditFormJGP extends  NavigationMixin(Lightni
                 actionName: 'view'
             },
         });
-
-      
     }
+
     handleReset() {
         const inputFields = this.template.querySelectorAll('lightning-input-field' );
         if (inputFields) {
             inputFields.forEach(field => {
                 field.reset();
             });
+        }
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+        // validations form in LWC using tost event
+        const fields = event.detail.fields;
+        let showError = false;
+        let message = 'Please fill the following fields\n';
+
+        if(fields.Rating == null || fields.Rating == '' || fields.Rating == undefined){
+            showError = true;
+            message += '\nRating';
+        }
+        if(fields.Industry == null || fields.Industry == '' || fields.Industry == undefined){
+            showError = true;
+            message += '\nIndustry';
+        }
+        if(showError){
+            const evt = new ShowToastEvent({
+                title: 'Required fields are missing!!!',
+                message: message,
+                variant: 'error',
+            });
+            this.dispatchEvent(evt);
+        }else{
+            this.template.querySelector('lightning-record-edit-form').submit(fields);
         }
     }
 }
