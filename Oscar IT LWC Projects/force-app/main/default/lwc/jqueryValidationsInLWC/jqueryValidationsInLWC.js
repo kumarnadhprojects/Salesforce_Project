@@ -1,73 +1,53 @@
 import { LightningElement } from 'lwc';
 
 export default class JqueryValidationsInLWC extends LightningElement {
-    handleChangeValidation(event){
-        let getFirstName = event.target.name;
-        let getLstName = event.target.name;
-        let getUserEmail = event.target.name;
-        let getUserPhone = event.target.name;
-        let getStatusActive = event.target.name;
-        let getCityName = event.target.name;
-  
-  
-        if(getFirstName === "firstName"){
+    //   Submit Functionality
+      handleSubmit(){    
             let firstName = this.template.querySelector('.firstName');
+            let lastName = this.template.querySelector('.lastName');
+            let userEmail = this.template.querySelector('.userEmail');
+            let userPhone = this.template.querySelector('.userPhone');
+            let statusCheckbox = this.template.querySelector('.statusActive');
             let firstNameVal = firstName.value;
+            let lastNameVal = lastName.value;
+            let userEmailVal = userEmail.value;
+            let userPhoneVal = userPhone.value;
+            let statusCheckboxVal = statusCheckbox.checked;
+
             if(!firstNameVal){
-              firstName.setCustomValidity('Please Enter the First Name');
+                firstName.setCustomValidity('Please Enter the First Name');
             }else{
-              firstName.setCustomValidity('');
+                firstName.setCustomValidity('');
             }
+       
+            if(!lastNameVal){
+                lastName.setCustomValidity('Please Enter the Larst Name');
+            }else{
+                lastName.setCustomValidity('');
+            }
+    
+            if(!userEmailVal){
+                userEmail.setCustomValidity('Please Enter the Email Id');
+            }else{
+                userEmail.setCustomValidity('');
+            }
+            
+            if(!userPhoneVal){
+                userPhone.setCustomValidity('Please Enter the Email Id');
+            }else{
+                userPhone.setCustomValidity('');
+            }
+    
+            if(!statusCheckboxVal){
+                statusCheckbox.setCustomValidity('Please Check Mark the Status Checkbox');
+            }else{
+                statusCheckbox.setCustomValidity('');
+            }
+
             firstName.reportValidity();
+            lastName.reportValidity();
+            userEmail.reportValidity();
+            userPhone.reportValidity();
+            statusCheckbox.reportValidity();
         }
-  
-  
-        else if(getLstName === "lastName"){
-          let lastName = this.template.querySelector('.lastName');
-          let lastNameVal = lastName.value;
-          if(!lastNameVal){
-              lastName.setCustomValidity('Please Enter the Larst Name');
-          }else{
-              lastName.setCustomValidity('');
-          }
-          lastName.reportValidity();
-         }
-  
-        
-         else if(getUserEmail === "userEmail"){
-          let userEmail = this.template.querySelector('.userEmail');
-          let userEmailVal = userEmail.value;
-          if(!userEmailVal){
-              userEmail.setCustomValidity('Please Enter the Email Id');
-          }else{
-              userEmail.setCustomValidity('');
-          }
-          userEmail.reportValidity();
-         }
-  
-  
-         else if(getUserPhone === "userPhone"){
-          let userPhone = this.template.querySelector('.userPhone');
-          let userPhoneVal = userPhone.value;
-          if(!userPhoneVal){
-              userPhone.setCustomValidity('Please Enter the Email Id');
-          }else{
-              userPhone.setCustomValidity('');
-          }
-          userPhone.reportValidity();
-         }
-  
-  
-         else if(getStatusActive === "statusCheckbox"){
-          let statusCheckbox = this.template.querySelector('.statusActive');
-          let statusCheckboxVal = statusCheckbox.checked;
-          if(!statusCheckboxVal){
-              statusCheckbox.setCustomValidity('Please Check Mark the Status Checkbox');
-          }else{
-              statusCheckbox.setCustomValidity('');
-          }
-          statusCheckbox.reportValidity();
-         }        
-  
-      }
 }
