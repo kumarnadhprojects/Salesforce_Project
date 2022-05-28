@@ -37,8 +37,8 @@ export default class LightningRecordEditFormJGP extends  NavigationMixin(Lightni
 
     handleSubmit(event){
         event.preventDefault();
-        // validations form in LWC using tost event
         const fields = event.detail.fields;
+        // validations form in LWC using tost event
         let showError = false;
         let message = 'Please fill the following fields\n';
 
@@ -61,4 +61,5 @@ export default class LightningRecordEditFormJGP extends  NavigationMixin(Lightni
             this.template.querySelector('lightning-record-edit-form').submit(fields);
         }
     }
+
 }
