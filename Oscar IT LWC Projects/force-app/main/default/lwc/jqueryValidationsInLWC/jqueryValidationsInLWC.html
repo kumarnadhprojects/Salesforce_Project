@@ -1,6 +1,6 @@
 <template>
     <lightning-card title="Create a custom form validation in Lightning web component - LWC" icon-name="custom:custom12" size="small"> 
-        <div class="slds-grid slds-wrap">
+        <div id="validate" class="slds-grid slds-wrap">
             <div class="slds-col slds-size_6-of-12 slds-p-horizontal--medium slds-m-bottom--medium">
                <lightning-Input type="text" label="First Name" value={firstName} name="firstName" class="firstName"></lightning-input>
             </div>
@@ -24,4 +24,14 @@
          <lightning-button type="submit" label="Submit" variant="brand" onclick={handleSubmit}>
          </lightning-button>
     </lightning-card>
+    <lightning-card title="Include JQuery in LWC (Lightning Web Component) ">
+      <div class="slds-m-around_medium">
+          <div class="flip" onclick={slideIt}>Click Here to Slide Down or Up</div>
+          <div class="panel">
+              <p class="innerDiv" onclick={slideRight}>
+                  JQuery in LWC
+              </p>
+          </div>
+      </div>
+  </lightning-card>
 </template>

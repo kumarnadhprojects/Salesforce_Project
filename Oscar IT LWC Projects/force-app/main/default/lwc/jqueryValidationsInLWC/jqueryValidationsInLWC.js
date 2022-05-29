@@ -1,7 +1,10 @@
 import { LightningElement } from 'lwc';
+import { loadScript,loadStyle } from 'lightning/platformResourceLoader';
+import J_Query from '@salesforce/resourceUrl/J_Query';
+import jquery_validate from '@salesforce/resourceUrl/jquery_validate';
 
 export default class JqueryValidationsInLWC extends LightningElement {
-    //   Submit Functionality
+    // Submit Functionality
       handleSubmit(){    
             let firstName = this.template.querySelector('.firstName');
             let lastName = this.template.querySelector('.lastName');
@@ -50,4 +53,24 @@ export default class JqueryValidationsInLWC extends LightningElement {
             userPhone.reportValidity();
             statusCheckbox.reportValidity();
         }
+
+        // JQuery plugin
+        renderedCallback(){
+            loadScript(this, J_Query),
+            loadScript(this, jquery_validate)
+            .then(() => {
+                console.log('JQuery loaded.');
+            })
+            .catch(error=>{
+                console.log('Failed to load the JQuery : ' +error);
+            });
+        }
+        slideIt(event){
+            $(this.template.querySelector('.panel')).slideToggle("slow");
+        }
+
+        slideRight(event){
+            $(this.template.querySelector('.innerDiv')).animate({left: '275px'});
+        }
+        
 }
