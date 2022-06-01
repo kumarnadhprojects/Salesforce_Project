@@ -41,7 +41,7 @@ public class TreeLWCController {
             this.items = items;
         }
     }
-
+// Using Javascript tree
     @AuraEnabled
     public static list<AccConWrap> accountConTree(){
         list<account> acclist = [ select id,name,(select id,lastName,firstName from contacts) from account];
