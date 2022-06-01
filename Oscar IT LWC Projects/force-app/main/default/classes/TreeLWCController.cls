@@ -2,24 +2,30 @@ public class TreeLWCController {
 	@AuraEnabled
     public static List<item> getAccountTree(){
         List<item> items = new List<item>();
-        List<Account> acctList = new List<Account>();
         //get list of accounts and respective contacts
-        acctList = [SELECT Id, Name, (SELECT Id, Name From Contacts) From Account];
+        List<Account> acctList = [SELECT Id, Name, (SELECT Id, Name From Contacts) From Account];
         for(Account acc: acctList){
-             
             //get contacts of current account record
             List<item> conitems = new List<item>();
             for(Contact c: acc.Contacts){
+                // System.debug(c);
                 //add contact items
-                item conitem = new item(c.Name, String.valueOf(c.Id), false, null);
+                item conitem = new item();
+                conitem.label = c.Name;
+                conitem.name = String.valueOf(c.Id);
+                conitem.expanded = false;
+                conitem.items = null;
                 conitems.add(conitem);
             }
              
             //add account items
-            item accitem = new item(acc.Name, String.valueOf(acc.Id), false, conitems);
+            item accitem = new item();
+            accitem.label = acc.Name;
+            accitem.name = String.valueOf(acc.Id);
+            accitem.expanded = false;
+            accitem.items = conitems;
             items.add(accitem);
         }
-        system.debug(items);
         return items;
     }
      
@@ -33,13 +39,6 @@ public class TreeLWCController {
         public Boolean expanded;
         @AuraEnabled
         public List<item> items;
-         
-        public item(String label, String name, Boolean expanded, List<item> items){
-            this.label = label;
-            this.name = name;
-            this.expanded = expanded;
-            this.items = items;
-        }
     }
 // Using Javascript tree
     @AuraEnabled
