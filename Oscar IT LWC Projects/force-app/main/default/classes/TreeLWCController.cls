@@ -41,4 +41,24 @@ public class TreeLWCController {
             this.items = items;
         }
     }
+
+    @AuraEnabled
+    public static list<AccConWrap> accountConTree(){
+        list<account> acclist = [ select id,name,(select id,lastName,firstName from contacts) from account];
+        list<AccConWrap> lst_accconwrap = new list<AccConWrap>();
+        for(account acc : acclist){
+          AccConWrap ac = new AccConWrap(); 
+            ac.AccName = acc.Name;
+            ac.conlist = acc.contacts;
+            lst_accconwrap.add(ac);
+        }
+        return lst_accconwrap;
+    }
+    
+    public class AccConWrap{
+        @AuraEnabled
+        public string AccName;
+        @AuraEnabled
+        public list<contact> conlist;
+    }
 }
