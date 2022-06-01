@@ -26,13 +26,13 @@ public class TreeLWCController {
     //Item Wrapper Class
     public class item{
         @AuraEnabled
-        public String label {get; set;}
+        public String label;
         @AuraEnabled
-        public String name {get; set;}
+        public String name;
         @AuraEnabled
-        public Boolean expanded {get; set;}
+        public Boolean expanded;
         @AuraEnabled
-        public List<item> items {get; set;}
+        public List<item> items;
          
         public item(String label, String name, Boolean expanded, List<item> items){
             this.label = label;
