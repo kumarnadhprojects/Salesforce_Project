@@ -7,8 +7,8 @@ import getFinalTermsValue from '@salesforce/apex/getfinalterm.getFinalTermsValue
 
 export default class FinalTermsDetails extends LightningElement {
     // Expose a field to make it available in the template
-    nameField = NAME_FIELD;
-    opportunityField = OPPORTUNITY_FIELD;
+    @api renderDetailsPage;
+    @api cancelBtnValue;
 
     // Flexipage provides recordId and objectApiName
     @api finalTermId;
@@ -35,5 +35,17 @@ export default class FinalTermsDetails extends LightningElement {
         .catch(error=>{
             console.log(error);
         })
+    }
+
+    handleFinal(){
+        this.renderDetailsPage = 'Step4';
+        const eve = new CustomEvent('rendercmp',{detail:this.renderDetailsPage});
+        this.dispatchEvent(eve);
+    }
+
+    handlecancel(){
+        this.cancelBtnValue = 'Step4';
+        const eve = new CustomEvent('rendercancel',{detail:this.cancelBtnValue});
+        this.dispatchEvent(eve);
     }
 }

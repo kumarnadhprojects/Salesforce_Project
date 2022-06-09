@@ -7,8 +7,8 @@ import getloanDetailsValue from '@salesforce/apex/getfinalterm.getloanDetailsVal
 
 export default class LoanApplicationDetails extends LightningElement {
     // Expose a field to make it available in the template
-    nameField = NAME_FIELD;
-    opportunityField = OPPORTUNITY_FIELD;
+    @api renderDetailsPage;
+    @api cancelBtnValue;
 
     // Flexipage provides recordId and objectApiName
     @api loanDetailId;
@@ -35,5 +35,17 @@ export default class LoanApplicationDetails extends LightningElement {
         .catch(error=>{
             console.log(error);
         })
+    }
+
+    handleLoan(){
+        this.renderDetailsPage = 'Step3';
+        const eve = new CustomEvent('rendercmp',{detail:this.renderDetailsPage});
+        this.dispatchEvent(eve);
+    }
+
+    handlecancel(){
+        this.cancelBtnValue = 'Step3';
+        const eve = new CustomEvent('rendercancel',{detail:this.cancelBtnValue});
+        this.dispatchEvent(eve);
     }
 }

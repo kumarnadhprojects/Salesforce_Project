@@ -7,8 +7,8 @@ import getIncomeDetailsValue from '@salesforce/apex/getfinalterm.getIncomeDetail
 
 export default class IncomeDetails extends LightningElement {
     // Expose a field to make it available in the template
-    nameField = NAME_FIELD;
-    opportunityField = OPPORTUNITY_FIELD;
+    @api renderDetailsPage;
+    @api cancelBtnValue;
 
     // Flexipage provides recordId and objectApiName
     @api incomeDetailId;
@@ -35,5 +35,17 @@ export default class IncomeDetails extends LightningElement {
         .catch(error=>{
             console.log(error);
         })
+    }
+
+    handleInsert(){
+        this.renderDetailsPage = 'Step2';
+        const eve = new CustomEvent('rendercmp',{detail:this.renderDetailsPage});
+        this.dispatchEvent(eve);
+    }
+
+    handlecancel(){
+        this.cancelBtnValue = 'Step2';
+        const eve = new CustomEvent('rendercancel',{detail:this.cancelBtnValue});
+        this.dispatchEvent(eve);
     }
 }

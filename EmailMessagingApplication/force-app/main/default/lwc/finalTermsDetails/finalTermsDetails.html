@@ -5,6 +5,11 @@
             fields={fields}
             columns="2"
             mode="view"
+            onsubmit={handleFinal}
+            oncancel={handlecancel}
         >
         </lightning-record-form>
+        <div class="slds-align_absolute-center slds-m-top_x-small">
+            <lightning-button label="Transfer" variant="brand"></lightning-button>
+        </div>
 </template>

@@ -1,10 +1,51 @@
 <template>
-    <lightning-card if:true={opportunityCard} title="Opportunity Detail Page">
+    <lightning-card if:true={opportunityCard}>
         <div class="slds-p-around_small">
-            <c-assert-datail-page assert-detail-id={parentRecordId} if:true={stage1}></c-assert-datail-page>
-            <c-income-details income-detail-id={parentRecordId} if:true={stage2}></c-income-details>
-            <c-loan-application-details loan-detail-id={parentRecordId} if:true={stage3}></c-loan-application-details>
-            <c-final-terms-details final-term-id={parentRecordId} if:true={stage4}></c-final-terms-details>
+            <div class="slds-text-heading_small slds-align_absolute-center slds-m-top_x-small"><b>Stages</b></div>
+            <div class="slds-theme_default">
+                <div class="slds-p-around_medium">
+                    <lightning-progress-indicator type="path" current-step={selectedStep} variant="base">
+                        <lightning-progress-step onclick={handleAssetClick} label="Asset Details" onstepfocus={selectStep1} value="Step1">
+                        </lightning-progress-step>
+                        <lightning-progress-step onclick={handleAssetClick} label="Income Details" onstepfocus={selectStep2} value="Step2">
+                        </lightning-progress-step>
+                        <lightning-progress-step onclick={handleAssetClick} label="Loan Application Details" onstepfocus={selectStep3} value="Step3">
+                        </lightning-progress-step>
+                        <lightning-progress-step onclick={handleAssetClick} label="Final Terms" onstepfocus={selectStep4} value="Step4">
+                        </lightning-progress-step>
+                    </lightning-progress-indicator>
+                </div>
+            </div>
+            <lightning-card>
+                <div class="slds-text-heading_small slds-m-bottom_x-small"> <b>Opportunity detail</b></div>
+                <c-assert-datail-page 
+                    onrendercmp={handleRender}
+                    assert-detail-id={parentRecordId} 
+                    if:true={stage1}
+                    >
+                </c-assert-datail-page>
+                <c-income-details 
+                    onrendercmp={handleRender}
+                    onrendercancel={handle_Cancel}
+                    income-detail-id={parentRecordId} 
+                    if:true={stage2}
+                    >
+                </c-income-details>
+                <c-loan-application-details 
+                    onrendercmp={handleRender}
+                    onrendercancel={handle_Cancel}
+                    loan-detail-id={parentRecordId} 
+                    if:true={stage3}
+                    >
+                </c-loan-application-details>
+                <c-final-terms-details 
+                    onrendercmp={handleRender}
+                    onrendercancel={handle_Cancel}
+                    final-term-id={parentRecordId} 
+                    if:true={stage4}
+                    >
+                </c-final-terms-details>
+            </lightning-card>
         </div>
     </lightning-card>
 </template>
