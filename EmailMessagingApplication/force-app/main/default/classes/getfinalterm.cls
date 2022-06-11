@@ -1,21 +1,4 @@
 public with sharing class getfinalterm {
-
-    @AuraEnabled(cacheable=true)
-    public static Object ChangeOpportunityOwner(Object OpportunityId){
-        try {
-            //Asset_Detail__c opp = [SELECT Id, OwnerId FROM Asset_Detail__c WHERE Id = :OpportunityId];
-            //opp.OwnerId = UserInfo.getUserId();
-            // Update opp;
-            // "[\"0055j000002Twl7AAC\"]"
-            // String UserValue = OpportunityId.replaceAll(regExp, replacement);
-            // User ass = [select Id,Name from User where Id =: UserConVal];
-            // System.debug(ass.Name);
-            Return OpportunityId;
-        } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
-        }
-    }
-
     @AuraEnabled
     public static string getfinaltermDetails(String UserId){
         try {
@@ -122,18 +105,5 @@ public with sharing class getfinalterm {
         @AuraEnabled
         public string Id;
     }
-
-    // @AuraEnabled
-    // public static User ChangeOpportunityOwner(String OpportunityId) {
-    //     //Asset_Detail__c opp = [SELECT Id, OwnerId FROM Asset_Detail__c WHERE Id = :OpportunityId];
-    //     //opp.OwnerId = UserInfo.getUserId();
-    //     // Update opp;
-    //     System.debug(OpportunityId);
-    //     user ass = [select Id,Name from User where Id =: OpportunityId];
-    //     System.debug(ass.Name);
-    //     //System.debug(opp);
-    //     Return ass;
-    // }
-
 
 }
