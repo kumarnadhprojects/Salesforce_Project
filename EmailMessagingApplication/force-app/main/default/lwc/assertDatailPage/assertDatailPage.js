@@ -2,7 +2,6 @@ import { LightningElement, api,track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import {  getRecordNotifyChange } from 'lightning/uiRecordApi';
 import ASSERTOBJECT from '@salesforce/schema/Asset_Detail__c';
-import USER_NAME_FIELD from '@salesforce/schema/Asset_Detail__c.OwnerId';
 import NAME_FIELD from '@salesforce/schema/Asset_Detail__c.Name';
 import OPPORTUNITY_FIELD from '@salesforce/schema/Asset_Detail__c.Opportunity_name__c';
 import getfinaltermDetails from '@salesforce/apex/getfinalterm.getfinaltermDetails';
@@ -15,7 +14,7 @@ export default class AssertDatailPage extends LightningElement {
     @track isModalOpen = false;
     @api selectedId;
     @api childObjectApiName = 'Asset_Detail__c';
-    @api targetFieldApiName = 'Username__c'; //AccountId is the default value
+    @api targetFieldApiName = 'Username__c';
     @api fieldLabel = 'Change Owner';
     @api disabled = false;
     @api value;
@@ -26,8 +25,7 @@ export default class AssertDatailPage extends LightningElement {
     @api recordId;
     @api objectApiName = ASSERTOBJECT;
 
-    fields = [NAME_FIELD, OPPORTUNITY_FIELD,USER_NAME_FIELD];
-    fieldsInmodel = [USER_NAME_FIELD];
+    fields = [NAME_FIELD, OPPORTUNITY_FIELD];
 
     connectedCallback(){
         getfinaltermDetails({UserId:this.assertDetailId})
@@ -74,7 +72,6 @@ export default class AssertDatailPage extends LightningElement {
         this.isModalOpen = false;
         // let userId = JSON.stringify(this.selectedRecordId);
         // User Details
-        alert(this.selectedId);
         getChangeOpportunityOwner({OpportunityId: this.recordId,SelectedUserId: this.selectedId})
         .then(result => {
             const event = new ShowToastEvent({
