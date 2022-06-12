@@ -9,7 +9,7 @@
         >
         </lightning-record-form>
         <div class="slds-align_absolute-center slds-m-top_x-small">
-            <lightning-button onclick={openModal} label="Transfer" variant="brand"></lightning-button>
+            <lightning-button onclick={openModal} label="Transfer" variant="brand" disabled={isDisabled}></lightning-button>
         </div>
         <!--Use template if:true to display/hide popup based on isModalOpen value--> 
         <template if:true={isModalOpen}>
@@ -45,8 +45,9 @@
                     </div>
                     <!-- Modal/Popup Box LWC footer starts here -->
                     <footer class="slds-modal__footer">
-                        <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
-                        <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">OK</button>
+                        <lightning-button onclick={closeModal} label="Cancel" variant="neutral"></lightning-button>
+                        &nbsp;&nbsp;&nbsp;
+                        <lightning-button onclick={submitDetails} label="OK" variant="brand"></lightning-button>
                     </footer>
                 </div>
             </section>

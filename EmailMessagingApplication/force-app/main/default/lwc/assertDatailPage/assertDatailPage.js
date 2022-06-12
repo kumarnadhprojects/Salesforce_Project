@@ -1,4 +1,4 @@
-import { LightningElement, api,track } from 'lwc';
+import { LightningElement, api,track} from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import {  getRecordNotifyChange } from 'lightning/uiRecordApi';
 import ASSERTOBJECT from '@salesforce/schema/Asset_Detail__c';
@@ -7,6 +7,7 @@ import OPPORTUNITY_FIELD from '@salesforce/schema/Asset_Detail__c.Opportunity_na
 import getfinaltermDetails from '@salesforce/apex/getfinalterm.getfinaltermDetails';
 import getAssertDetailsValue from '@salesforce/apex/getfinalterm.getAssertDetailsValue';
 import getChangeOpportunityOwner from '@salesforce/apex/changeOwner.ChangeOpportunityOwner';
+import getLoginUserId from '@salesforce/apex/getfinalterm.getLoginUserId';
 
 export default class AssertDatailPage extends LightningElement {
     @api renderDetailsPage;
@@ -19,6 +20,7 @@ export default class AssertDatailPage extends LightningElement {
     @api disabled = false;
     @api value;
     @api required = false;
+    isDisabled
 
     // Flexipage provides recordId and objectApiName
     @api assertDetailId;
@@ -47,6 +49,20 @@ export default class AssertDatailPage extends LightningElement {
         })
     }
 
+    renderedCallback(){
+        getLoginUserId({recordID: this.recordId})
+        .then(result =>{
+            if(result === true){
+                this.isDisabled = false;
+            }else{
+                this.isDisabled = true;
+            }
+        })
+        .catch(error=>{
+            //console.log(error);
+        })
+    }
+
     handleAssert(){
         this.renderDetailsPage = 'Step1';
         const eve = new CustomEvent('rendercmp',{detail:this.renderDetailsPage});
@@ -70,7 +86,20 @@ export default class AssertDatailPage extends LightningElement {
         // to close modal set isModalOpen tarck value as false
         //Add your code to call apex method or do some processing
         this.isModalOpen = false;
-        // let userId = JSON.stringify(this.selectedRecordId);
+        //Button Functionality starts
+        getLoginUserId({recordID: this.recordId})
+        .then(result =>{
+            if(result === true){
+                this.isDisabled = false;
+            }else{
+                this.isDisabled = true;
+            }
+            getRecordNotifyChange([{recordId: this.recordId}]);
+        })
+        .catch(error=>{
+            //console.log(error);
+        })
+        // Button Functionality Ends
         // User Details
         getChangeOpportunityOwner({OpportunityId: this.recordId,SelectedUserId: this.selectedId})
         .then(result => {
