@@ -19,8 +19,7 @@ export default class AssertDatailPage extends LightningElement {
     @api fieldLabel = 'Change Owner';
     @api disabled = false;
     @api value;
-    @api required = false;
-    isDisabled
+    isDisabled;
 
     // Flexipage provides recordId and objectApiName
     @api assertDetailId;
@@ -86,21 +85,7 @@ export default class AssertDatailPage extends LightningElement {
         // to close modal set isModalOpen tarck value as false
         //Add your code to call apex method or do some processing
         this.isModalOpen = false;
-        //Button Functionality starts
-        getLoginUserId({recordID: this.recordId})
-        .then(result =>{
-            if(result === true){
-                this.isDisabled = false;
-            }else{
-                this.isDisabled = true;
-            }
-            getRecordNotifyChange([{recordId: this.recordId}]);
-        })
-        .catch(error=>{
-            //console.log(error);
-        })
-        // Button Functionality Ends
-        // User Details
+        // User Details Start
         getChangeOpportunityOwner({OpportunityId: this.recordId,SelectedUserId: this.selectedId})
         .then(result => {
             const event = new ShowToastEvent({
@@ -110,6 +95,7 @@ export default class AssertDatailPage extends LightningElement {
             });
             this.dispatchEvent(event);
             getRecordNotifyChange([{recordId: this.recordId}]);
+            location.reload();
         })
         .catch(error=>{
             const event = new ShowToastEvent({
@@ -120,17 +106,11 @@ export default class AssertDatailPage extends LightningElement {
             });
             this.dispatchEvent(event);
         });
-        // User Details
+        // User Details Ends
     }
 
     handleChange(event) {
         // Creates the event
         this.selectedId = event.target.value;
-    }
-
-    @api isValid() {
-        if (this.required) {
-            this.template.querySelector('lightning-input-field').reportValidity();
-        }
     }
 }
