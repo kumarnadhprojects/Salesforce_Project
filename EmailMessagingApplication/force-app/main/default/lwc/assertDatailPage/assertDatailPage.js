@@ -51,7 +51,7 @@ export default class AssertDatailPage extends LightningElement {
     renderedCallback(){
         getLoginUserId({recordID: this.recordId})
         .then(result =>{
-            if(result === true){
+            if(result){
                 this.isDisabled = false;
             }else{
                 this.isDisabled = true;

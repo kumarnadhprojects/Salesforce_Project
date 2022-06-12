@@ -37,7 +37,7 @@ export default class OpportunityDetailPage extends LightningElement {
             }
         })
         .catch(error=>{
-            alert(error);
+            alert(JSON.stringify(error));
         })
     }
 
