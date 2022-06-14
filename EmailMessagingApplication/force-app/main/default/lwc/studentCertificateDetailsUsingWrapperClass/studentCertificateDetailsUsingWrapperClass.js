@@ -19,7 +19,6 @@ export default class StudentCertificateDetailsUsingWrapperClass extends Lightnin
         getStudentCertificateDetails()
         .then(result=> {
             this.stulist = result;
-            alert('Certificate Details'+JSON.stringify(this.stulist));
             this.isLoading = false;
         })
         .catch(error=>{
