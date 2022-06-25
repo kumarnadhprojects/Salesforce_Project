@@ -4,7 +4,7 @@ import getAccountList from '@salesforce/apex/paginationClass.getAccountList';
 export default class PaginationInLwc extends LightningElement {
     @track loader = false;
     @track error = null;
-    @track pageSize = 10;
+    @track pageSize = 5;
     @track pageNumber = 1;
     @track totalRecords = 0;
     @track totalPages = 0;
